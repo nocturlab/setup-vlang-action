@@ -36,3 +36,5 @@ export async function run() {
     core.setFailed(error.message);
   }
 }
+
+run();
