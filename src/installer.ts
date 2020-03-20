@@ -4,9 +4,7 @@ import * as httpm from '@actions/http-client';
 import * as sys from './system';
 import {debug} from '@actions/core';
 
-export async function download_v(
-  version_v: string
-): Promise<string | undefined> {
+export async function download_v(v_version: string): Promise<string | undefined> {
   let tool_path: string | undefined;
 
   try {
@@ -14,7 +12,7 @@ export async function download_v(
     let download_url: string = `https://github.com/vlang/v/releases/download/${v_version}/v_${sys.getPlatform()}.zip`
     console.log(`Downloading VLang from ${download_url}`);
 
-    let downloadPath: string = await tc.downloadTool(download_url);
+    let download_path: string = await tc.downloadTool(download_url);
     debug(`Vlang downloaded to ${downloadPath}`);
 
     // extract
