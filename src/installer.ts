@@ -10,7 +10,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
   try {
     // download
     let download_url: string = `https://github.com/vlang/v/releases/`
-    if(v_version.contains('latest'))
+    if(v_version.includes('latest'))
       download_url+= `${v_version}/download/v_${sys.getPlatform()}.zip`
     else
       download_url+= `download/${v_version}/v_${sys.getPlatform()}.zip`
