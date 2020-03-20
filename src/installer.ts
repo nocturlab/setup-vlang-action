@@ -13,7 +13,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
     console.log(`Downloading VLang from ${download_url}`);
 
     let download_path: string = await tc.downloadTool(download_url);
-    debug(`Vlang downloaded to ${downloadPath}`);
+    debug(`Vlang downloaded to ${download_path}`);
 
     // extract
     console.log('Extracting VLang...');
