@@ -19,7 +19,11 @@ export async function download_v(v_version: string): Promise<string | undefined>
 
     let download_path: string = await tc.downloadTool(download_url);
     debug(`Vlang downloaded to ${download_path}`);
-
+  } catch (error) {
+    throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
+  }
+  
+  try {
     // extract
     console.log('Extracting VLang...');
     let ext_path: string = await tc.extractZip(download_path);
@@ -29,7 +33,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
     const tool_root = path.join(ext_path, 'v');
     tool_path = await tc.cacheDir(tool_root, 'v', v_version);
   } catch (error) {
-    throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
+    throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
   }
 
   return tool_path;
