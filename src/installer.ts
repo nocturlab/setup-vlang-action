@@ -1,6 +1,5 @@
 import * as tc from '@actions/tool-cache';
 import * as path from 'path';
-import * as semver from 'semver';
 import * as httpm from '@actions/http-client';
 import * as sys from './system';
 import {debug} from '@actions/core';
