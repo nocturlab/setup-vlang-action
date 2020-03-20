@@ -4656,7 +4656,11 @@ function download_v(v_version) {
         let tool_path;
         try {
             // download
-            let download_url = `https://github.com/vlang/v/releases/download/${v_version}/v_${sys.getPlatform()}.zip`;
+            let download_url = `https://github.com/vlang/v/releases/`;
+            if (v_version == 'latest')
+                download_url += `${v_version}/download/v_${sys.getPlatform()}.zip`;
+            else
+                download_url += `download/${v_version}/v_${sys.getPlatform()}.zip`;
             console.log(`Downloading VLang from ${download_url}`);
             let download_path = yield tc.downloadTool(download_url);
             core_1.debug(`Vlang downloaded to ${download_path}`);
