@@ -22,14 +22,14 @@ export async function download_v(v_version: string): Promise<string | undefined>
 
     // extract
     console.log('Extracting VLang...');
-    let ext_path: string = await tc.extractZip(download_path, '${download_path}/v');
+    let ext_path: string = await tc.extractZip(download_path);
     debug(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
     const tool_root = path.join(ext_path, 'v');
     tool_path = await tc.cacheDir(tool_root, 'v', v_version);
   } catch (error) {
-    throw new Error(`Failed to download version ${v_version}: ${error}`);
+    throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
   }
 
   return tool_path;
