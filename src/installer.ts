@@ -22,7 +22,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
 
     // extract
     console.log('Extracting VLang...');
-    let ext_path: string = await tc.extractZip(download_path);
+    let ext_path: string = await tc.extractZip(download_path, 'v');
     debug(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
