@@ -6,7 +6,7 @@ import {debug} from '@actions/core';
 
 export async function download_v(v_version: string): Promise<string | undefined> {
   let tool_path: string | undefined;
-
+  let download_path: string | undefined;
   try {
     // download
     let download_url: string = `https://github.com/vlang/v/releases/`
@@ -17,7 +17,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
       
     console.log(`Downloading VLang from ${download_url}`);
 
-    let download_path: string = await tc.downloadTool(download_url);
+    download_path = await tc.downloadTool(download_url);
     debug(`Vlang downloaded to ${download_path}`);
   } catch (error) {
     throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
