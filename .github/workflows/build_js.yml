@@ -1,0 +1,37 @@
+name: build-test
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, windows-latest]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup node 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - name: npm install
+      run: npm install
+      
+    - name: npm build
+      run: npm run build
+      
+    - name: rm .gitignore
+      run: rm .gitignore
+
+    - name: git push dist/
+      run : git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git && git add dist && git commit -m "WORKFLOW_COMMIT: update dist/index.js" && git push
