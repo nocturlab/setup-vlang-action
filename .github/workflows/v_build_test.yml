@@ -15,5 +15,5 @@ jobs:
     - name: Set up VLang version master
       uses: ./
       with:
-        v-version: master
+        v-version: latest
       id: v
