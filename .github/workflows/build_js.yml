@@ -43,3 +43,9 @@ jobs:
         git commit -m "WORKFLOW_COMMIT - update dist/index.js [skip ci]"
         git push
       continue-on-error: true
+
+    - name: Set up VLang version master
+      uses: ./
+      with:
+        v-version: latest
+      id: v
