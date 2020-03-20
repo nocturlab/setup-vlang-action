@@ -42,3 +42,4 @@ jobs:
         git add dist
         git commit -m "WORKFLOW_COMMIT - update dist/index.js [skip ci]"
         git push
+      continue-on-error: true
