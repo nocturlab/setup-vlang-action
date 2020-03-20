@@ -22,7 +22,7 @@ export async function run() {
 
       if (install_dir) {
         core.exportVariable('V_HOME', install_dir);
-        core.addPath(path.join(install_dir, 'bin'));
+        core.addPath(install_dir);
         console.log('Added VLang to the path');
       } else {
         throw new Error(`Could not find a version that satisfied version spec: ${v_version}`);
