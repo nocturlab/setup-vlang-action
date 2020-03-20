@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set up VLang version master
-      uses: actions/setup-v@1-build-vlang-cli-as-github-action
+      uses: ./
       with:
         v-version: master
       id: v
