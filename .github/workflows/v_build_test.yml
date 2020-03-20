@@ -10,6 +10,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - name: Wait for build to succeed
+      uses: fountainhead/action-wait-for-check@v1.0.0
+      id: wait-for-build
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        checkName: Build TS
+        ref: github.event.pull_request.head.sha || github.sha
     - name: Checkout
       uses: actions/checkout@v2.0.0
     - name: Set up VLang version master
