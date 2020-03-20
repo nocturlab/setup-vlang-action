@@ -1,13 +1,13 @@
-name: build-test
+name: Build TS
+
 on:
   push:
-    branches:
-      - master
     paths-ignore:
       - '**.md'
   pull_request:
     paths-ignore:
       - '**.md'
+
 jobs:
   run:
     name: Run
@@ -34,4 +34,4 @@ jobs:
       run: rm .gitignore
 
     - name: git push dist/
-      run : git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git && git add dist && git commit -m "WORKFLOW_COMMIT: update dist/index.js" && git push
+      run : git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git && git add dist && git commit -m "WORKFLOW_COMMIT - update dist/index.js" && git push
