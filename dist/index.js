@@ -2893,7 +2893,7 @@ function run() {
                 }
                 if (install_dir) {
                     core.exportVariable('V_HOME', install_dir);
-                    core.addPath(path.join(install_dir, 'bin'));
+                    core.addPath(install_dir);
                     console.log('Added VLang to the path');
                 }
                 else {
@@ -4654,16 +4654,22 @@ const core_1 = __webpack_require__(470);
 function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
         let tool_path;
+        let download_path;
         try {
             // download
             let download_url = `https://github.com/vlang/v/releases/`;
-            if (v_version == 'latest')
+            if (v_version.includes('latest'))
                 download_url += `${v_version}/download/v_${sys.getPlatform()}.zip`;
             else
                 download_url += `download/${v_version}/v_${sys.getPlatform()}.zip`;
             console.log(`Downloading VLang from ${download_url}`);
-            let download_path = yield tc.downloadTool(download_url);
+            download_path = yield tc.downloadTool(download_url);
             core_1.debug(`Vlang downloaded to ${download_path}`);
+        }
+        catch (error) {
+            throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
+        }
+        try {
             // extract
             console.log('Extracting VLang...');
             let ext_path = yield tc.extractZip(download_path);
@@ -4673,7 +4679,7 @@ function download_v(v_version) {
             tool_path = yield tc.cacheDir(tool_root, 'v', v_version);
         }
         catch (error) {
-            throw new Error(`Failed to download version ${v_version}: ${error}`);
+            throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
         }
         return tool_path;
     });
