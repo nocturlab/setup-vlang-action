@@ -1,0 +1,17 @@
+name: VLang build workflow test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up VLang version master
+      uses: actions/setup-v@1-build-vlang-cli-as-github-action
+      with:
+        v-version: master
+      id: v
