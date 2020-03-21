@@ -2879,7 +2879,6 @@ const core = __importStar(__webpack_require__(470));
 const tc = __importStar(__webpack_require__(533));
 const installer = __importStar(__webpack_require__(923));
 const path = __importStar(__webpack_require__(622));
-const fs = __importStar(__webpack_require__(747));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -2892,16 +2891,10 @@ function run() {
                     console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
                     install_dir = yield installer.download_v(v_version);
                     console.log(`VLang Installed to ${install_dir}`);
-                    if (install_dir != undefined)
-                        fs.readdir(install_dir, (err, files) => {
-                            files.forEach(file => {
-                                console.log(file);
-                            });
-                        });
                 }
                 if (install_dir) {
                     core.exportVariable('V_HOME', install_dir);
-                    core.addPath(`${install_dir}/v`);
+                    core.addPath(path.join(install_dir, `v`));
                     console.log('Added VLang to the path');
                 }
                 else {
