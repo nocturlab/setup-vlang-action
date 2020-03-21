@@ -4675,6 +4675,7 @@ function download_v(v_version) {
             console.log(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
             const tool_root = path.join(ext_path, 'v');
+            console.log(`Add VLang to cache using dir: ${ext_path}`);
             tool_path = yield tc.cacheDir(tool_root, 'v', v_version);
         }
         catch (error) {
