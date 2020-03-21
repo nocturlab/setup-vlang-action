@@ -4652,7 +4652,6 @@ const path = __importStar(__webpack_require__(622));
 const sys = __importStar(__webpack_require__(913));
 function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
-        let tool_path;
         let download_path;
         let ext_path;
         try {
@@ -4681,8 +4680,7 @@ function download_v(v_version) {
         catch (error) {
             throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
         }
-        const tool_root = path.join(ext_path, 'v');
-        return tool_path;
+        return path.join(ext_path, 'v');
     });
 }
 exports.download_v = download_v;
