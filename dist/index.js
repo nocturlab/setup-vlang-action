@@ -4654,6 +4654,7 @@ function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
         let tool_path;
         let download_path;
+        let ext_path;
         try {
             // download
             let download_url = `https://github.com/vlang/v/releases/`;
@@ -4671,16 +4672,16 @@ function download_v(v_version) {
         try {
             // extract
             console.log('Extracting VLang...');
-            let ext_path = yield tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
+            ext_path = yield tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
             console.log(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
-            const tool_root = path.join(ext_path, 'v');
             console.log(`Add VLang to cache using dir: ${ext_path}`);
-            tool_path = yield tc.cacheDir(tool_root, 'v', v_version);
+            ext_path = yield tc.cacheDir(ext_path, 'v', v_version);
         }
         catch (error) {
             throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
         }
+        const tool_root = path.join(ext_path, 'v');
         return tool_path;
     });
 }
