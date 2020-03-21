@@ -4649,6 +4649,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const tc = __importStar(__webpack_require__(533));
 const path = __importStar(__webpack_require__(622));
+const fs = __importStar(__webpack_require__(747));
 const sys = __importStar(__webpack_require__(913));
 const core_1 = __webpack_require__(470);
 function download_v(v_version) {
@@ -4672,7 +4673,8 @@ function download_v(v_version) {
         try {
             // extract
             console.log('Extracting VLang...');
-            let ext_path = yield tc.extractZip(download_path);
+            fs.mkdirSync('./vlang');
+            let ext_path = yield tc.extractZip(download_path, './vlang');
             core_1.debug(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
             const tool_root = path.join(ext_path, 'v');
