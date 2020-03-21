@@ -36,14 +36,9 @@ export async function download_v(v_version: string): Promise<string | undefined>
     console.log(`Add VLang to cache`);
     cache_path = await tc.cacheDir(ext_path, 'v', v_version);
     console.log(`VLang was added to cache using dir: ${cache_path}`);
-    fs.readdir(cache_path, (err, files) => {
-      files.forEach(file => {
-        console.log(file);
-      });
-    })
   } catch (error) {
     throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
   }
 
-  return path.join(ext_path, 'v');
+  return cache_path;
 }
