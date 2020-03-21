@@ -8,6 +8,8 @@ import {debug} from '@actions/core';
 export async function download_v(v_version: string): Promise<string | undefined> {
   let tool_path: string | undefined;
   let download_path: string | undefined;
+  let ext_path: string | undefined;
+
   try {
     // download
     let download_url: string = `https://github.com/vlang/v/releases/`
@@ -27,16 +29,17 @@ export async function download_v(v_version: string): Promise<string | undefined>
   try {
     // extract
     console.log('Extracting VLang...');
-    let ext_path: string = await tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
+    ext_path = await tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
     console.log(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
-    const tool_root = path.join(ext_path, 'v');
     console.log(`Add VLang to cache using dir: ${ext_path}`);
-    tool_path = await tc.cacheDir(tool_root, 'v', v_version);
+    ext_path = await tc.cacheDir(ext_path, 'v', v_version);
   } catch (error) {
     throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
   }
+
+  const tool_root = path.join(ext_path, 'v');
 
   return tool_path;
 }
