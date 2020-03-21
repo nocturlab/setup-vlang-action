@@ -20,17 +20,11 @@ export async function run() {
         console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
         install_dir = await installer.download_v(v_version);
         console.log(`VLang Installed to ${install_dir}`);
-        if(install_dir != undefined)
-          fs.readdir(install_dir, (err, files) => {
-            files.forEach(file => {
-              console.log(file);
-            });
-          })
       }
 
       if (install_dir) {
         core.exportVariable('V_HOME', install_dir);
-        core.addPath(`${install_dir}/v`);
+        core.addPath(path.join(install_dir, `v`));
         console.log('Added VLang to the path');
       } else {
         throw new Error(`Could not find a version that satisfied version spec: ${v_version}`);
