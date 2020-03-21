@@ -4648,8 +4648,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tc = __importStar(__webpack_require__(533));
-const path = __importStar(__webpack_require__(622));
-const fs = __importStar(__webpack_require__(747));
 const sys = __importStar(__webpack_require__(913));
 function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -4679,16 +4677,11 @@ function download_v(v_version) {
             console.log(`Add VLang to cache`);
             cache_path = yield tc.cacheDir(ext_path, 'v', v_version);
             console.log(`VLang was added to cache using dir: ${cache_path}`);
-            fs.readdir(cache_path, (err, files) => {
-                files.forEach(file => {
-                    console.log(file);
-                });
-            });
         }
         catch (error) {
             throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
         }
-        return path.join(ext_path, 'v');
+        return cache_path;
     });
 }
 exports.download_v = download_v;
