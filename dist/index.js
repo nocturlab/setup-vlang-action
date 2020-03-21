@@ -4674,7 +4674,12 @@ function download_v(v_version) {
             // extract
             console.log('Extracting VLang...');
             fs.mkdirSync('./vlang');
-            console.log(fs.opendirSync('/home/runner/work/_temp/'));
+            fs.readdir('/home/runner/work/_temp/', function (err, items) {
+                console.log(items);
+                for (var i = 0; i < items.length; i++) {
+                    console.log(items[i]);
+                }
+            });
             let ext_path = yield tc.extractZip(download_path, './vlang');
             core_1.debug(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
