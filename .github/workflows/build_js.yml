@@ -49,6 +49,31 @@ jobs:
       with:
         v-version: latest
       id: v
+    - name: Test V is present
+      run: v version
+      
+  run-macos:
+    name: Run MacOS
+    runs-on: macos-latest
+    steps:
+    - name: Set up VLang version master
+      uses: ./
+      with:
+        v-version: latest
+      id: v
+
+    - name: Test V is present
+      run: v version
+      
+  run-windows:
+    name: Run Windows
+    runs-on: windows-latest
+    steps:
+    - name: Set up VLang version master
+      uses: ./
+      with:
+        v-version: latest
+      id: v
 
     - name: Test V is present
       run: v version
