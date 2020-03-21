@@ -17,7 +17,12 @@ export async function run() {
       if (!install_dir) {
         console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
         install_dir = await installer.download_v(v_version);
-        console.log('VLang Installed');
+        console.log(`VLang Installed to ${install_dir}`);
+        fs.readdir(install_dir, (err, files) => {
+          files.forEach(file => {
+            console.log(file);
+          });
+        })
       }
 
       if (install_dir) {
