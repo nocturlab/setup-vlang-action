@@ -4,7 +4,7 @@ author: 'shiipou'
 inputs: 
   v-version:
     description: 'The VLang version to download and use.'
-    default: 'master'
+    default: 'latest'
 runs:
   using: 'node12'
   main: 'dist/index.js'
