@@ -32,6 +32,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
 
     // extracts with a root folder that matches the fileName downloaded
     const tool_root = path.join(ext_path, 'v');
+    console.log(`Add VLang to cache using dir: ${ext_path}`);
     tool_path = await tc.cacheDir(tool_root, 'v', v_version);
   } catch (error) {
     throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
