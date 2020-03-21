@@ -1,5 +1,6 @@
 import * as tc from '@actions/tool-cache';
 import * as path from 'path';
+import * as fs from 'fs';
 import * as httpm from '@actions/http-client';
 import * as sys from './system';
 import {debug} from '@actions/core';
@@ -26,7 +27,8 @@ export async function download_v(v_version: string): Promise<string | undefined>
   try {
     // extract
     console.log('Extracting VLang...');
-    let ext_path: string = await tc.extractZip(download_path);
+    fs.mkdirSync('./vlang');
+    let ext_path: string = await tc.extractZip(download_path, './vlang');
     debug(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
