@@ -8,6 +8,7 @@ import {debug} from '@actions/core';
 export async function download_v(v_version: string): Promise<string | undefined> {
   let download_path: string | undefined;
   let ext_path: string | undefined;
+  let cache_path: string | undefined;
 
   try {
     // download
@@ -32,8 +33,9 @@ export async function download_v(v_version: string): Promise<string | undefined>
     console.log(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
-    console.log(`Add VLang to cache using dir: ${ext_path}`);
-    ext_path = await tc.cacheDir(ext_path, 'v', v_version);
+    console.log(`Add VLang to cache`);
+    cache_path = await tc.cacheDir(ext_path, 'v', v_version);
+    console.log(`VLang was added to cache using dir: ${cache_path}`);
   } catch (error) {
     throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
   }
