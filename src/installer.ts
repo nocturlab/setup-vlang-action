@@ -27,14 +27,14 @@ export async function download_v(v_version: string): Promise<string | undefined>
   try {
     // extract
     console.log('Extracting VLang...');
-    fs.mkdirSync('./vlang');
+    fs.mkdirSync('/home/runner/work/_temp/vlang');
     fs.readdir('/home/runner/work/_temp/', function(err, items) {
       console.log(items);
       for (var i=0; i<items.length; i++) {
           console.log(items[i]);
       }
     });
-    let ext_path: string = await tc.extractZip(download_path, './vlang');
+    let ext_path: string = await tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
     debug(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
