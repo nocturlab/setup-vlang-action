@@ -49,3 +49,6 @@ jobs:
       with:
         v-version: latest
       id: v
+
+    - name: Test V is present
+      run: v version
