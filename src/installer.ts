@@ -6,7 +6,6 @@ import * as sys from './system';
 import {debug} from '@actions/core';
 
 export async function download_v(v_version: string): Promise<string | undefined> {
-  let tool_path: string | undefined;
   let download_path: string | undefined;
   let ext_path: string | undefined;
 
@@ -39,7 +38,5 @@ export async function download_v(v_version: string): Promise<string | undefined>
     throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
   }
 
-  const tool_root = path.join(ext_path, 'v');
-
-  return tool_path;
+  return path.join(ext_path, 'v');
 }
