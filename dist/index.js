@@ -4673,14 +4673,14 @@ function download_v(v_version) {
         try {
             // extract
             console.log('Extracting VLang...');
-            fs.mkdirSync('./vlang');
+            fs.mkdirSync('/home/runner/work/_temp/vlang');
             fs.readdir('/home/runner/work/_temp/', function (err, items) {
                 console.log(items);
                 for (var i = 0; i < items.length; i++) {
                     console.log(items[i]);
                 }
             });
-            let ext_path = yield tc.extractZip(download_path, './vlang');
+            let ext_path = yield tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
             core_1.debug(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
             const tool_root = path.join(ext_path, 'v');
