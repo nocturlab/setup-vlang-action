@@ -4654,6 +4654,7 @@ function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
         let download_path;
         let ext_path;
+        let cache_path;
         try {
             // download
             let download_url = `https://github.com/vlang/v/releases/`;
@@ -4674,8 +4675,9 @@ function download_v(v_version) {
             ext_path = yield tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
             console.log(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
-            console.log(`Add VLang to cache using dir: ${ext_path}`);
-            ext_path = yield tc.cacheDir(ext_path, 'v', v_version);
+            console.log(`Add VLang to cache`);
+            cache_path = yield tc.cacheDir(ext_path, 'v', v_version);
+            console.log(`VLang was added to cache using dir: ${cache_path}`);
         }
         catch (error) {
             throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
