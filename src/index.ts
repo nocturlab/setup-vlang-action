@@ -13,17 +13,19 @@ export async function run() {
     console.log(`Setup VLang with version ${v_version}`);
 
     if (v_version) {
-      let install_dir: string | undefined = tc.find('v', v_version);
+      let cache_dir: string | undefined = tc.find('v', v_version);
+      let install_dir: string | undefined;
 
-      if (!install_dir) {
+      if (!cache_dir) {
         console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
         install_dir = await installer.download_v(v_version);
         console.log(`VLang Installed to ${install_dir}`);
-        fs.readdir(install_dir, (err, files) => {
-          files.forEach(file => {
-            console.log(file);
-          });
-        })
+        if(install_dir != undefined)
+          fs.readdir(install_dir, (err, files) => {
+            files.forEach(file => {
+              console.log(file);
+            });
+          })
       }
 
       if (install_dir) {
