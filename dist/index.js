@@ -4672,7 +4672,7 @@ function download_v(v_version) {
         try {
             // extract
             console.log('Extracting VLang...');
-            ext_path = yield tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
+            ext_path = yield tc.extractZip(download_path, './.vlang_tmp_build');
             console.log(`VLang extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
             console.log(`Add VLang to cache`);
