@@ -28,7 +28,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
   try {
     // extract
     console.log('Extracting VLang...');
-    ext_path = await tc.extractZip(download_path, '/home/runner/work/_temp/vlang');
+    ext_path = await tc.extractZip(download_path, './.vlang_tmp_build');
     console.log(`VLang extracted to ${ext_path}`);
 
     // extracts with a root folder that matches the fileName downloaded
