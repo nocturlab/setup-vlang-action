@@ -28,7 +28,12 @@ export async function download_v(v_version: string): Promise<string | undefined>
     // extract
     console.log('Extracting VLang...');
     fs.mkdirSync('./vlang');
-    console.log(fs.opendirSync('/home/runner/work/_temp/'));
+    fs.readdir('/home/runner/work/_temp/', function(err, items) {
+      console.log(items);
+      for (var i=0; i<items.length; i++) {
+          console.log(items[i]);
+      }
+    });
     let ext_path: string = await tc.extractZip(download_path, './vlang');
     debug(`VLang extracted to ${ext_path}`);
 
