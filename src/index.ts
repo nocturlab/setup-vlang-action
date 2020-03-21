@@ -4,6 +4,7 @@ import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import * as installer from './installer';
 import * as path from 'path';
+import * as fs from 'fs';
 
 export async function run() {
   try {
