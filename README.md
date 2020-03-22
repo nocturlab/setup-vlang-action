@@ -1,8 +1,8 @@
 # setup-vlang-action
-Github Action that allow you to compile v programs without the use of docker (because it's very slow)
+GitHub Action that allows you to compile V programs without the use of Docker (because it's very slow).
 
 ## Usage
-You just have to setup your workflow like this :
+You just have to setup your workflow like this:
 
 ```yml
 # file: .github/workflows/vlang-build-pipeline.yml
@@ -12,7 +12,7 @@ on:
   push:
     paths-ignore:
       - '**.md'
-      
+
 jobs:
   run:
     name: Run
@@ -30,3 +30,7 @@ jobs:
     - name: Run VLang tests
       run: v test .
 ```
+
+## Inputs
+
+- `v-version`: V version. Can be either exact version number, or `latest` (by default).
