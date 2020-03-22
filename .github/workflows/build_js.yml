@@ -23,14 +23,14 @@ jobs:
 
     - name: npm install
       run: npm install
-      
-      
+
+
     - name: Clean old dist/
       run: |
         rm -r dist/
         rm .gitignore
       continue-on-error: true
-      
+
     - name: npm build
       run: npm run build
 
@@ -44,21 +44,21 @@ jobs:
         git push
       continue-on-error: true
 
-    - name: Set up VLang version master
+    - name: Set up V version master
       uses: ./
       with:
         v-version: latest
       id: v
     - name: Test V is present
       run: v version
-      
+
   run-macos:
     name: Run MacOS
     runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Set up VLang version master
+    - name: Set up V version master
       uses: ./
       with:
         v-version: latest
@@ -66,14 +66,14 @@ jobs:
 
     - name: Test V is present
       run: v version
-      
+
   run-windows:
     name: Run Windows
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Set up VLang version master
+    - name: Set up V version master
       uses: ./
       with:
         v-version: latest

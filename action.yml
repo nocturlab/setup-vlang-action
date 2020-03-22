@@ -1,9 +1,9 @@
-name: 'Setup VLang environment'
-description: 'Setup a VLang environment and add it to the PATH'
+name: 'Setup V environment'
+description: 'Setup a V environment and add it to the PATH'
 author: 'shiipou'
-inputs: 
+inputs:
   v-version:
-    description: 'The VLang version to download and use.'
+    description: 'The V version to download and use.'
     default: 'latest'
 runs:
   using: 'node12'

@@ -2883,19 +2883,19 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             let v_version = core.getInput('v-version');
-            console.log(`Setup VLang with version ${v_version}`);
+            console.log(`Setup V with version ${v_version}`);
             if (v_version) {
                 let cache_dir = tc.find('v', v_version);
                 let install_dir;
                 if (!cache_dir) {
-                    console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
+                    console.log(`V ${v_version} can't be found using cache, attempting to download ...`);
                     install_dir = yield installer.download_v(v_version);
-                    console.log(`VLang Installed to ${install_dir}`);
+                    console.log(`V Installed to ${install_dir}`);
                 }
                 if (install_dir) {
                     core.exportVariable('V_HOME', install_dir);
                     core.addPath(install_dir);
-                    console.log('Added VLang to the path');
+                    console.log('Added V to the path');
                 }
                 else {
                     throw new Error(`Could not find a version that satisfied version spec: ${v_version}`);
@@ -4662,25 +4662,25 @@ function download_v(v_version) {
                 download_url += `${v_version}/download/v_${sys.getPlatform()}.zip`;
             else
                 download_url += `download/${v_version}/v_${sys.getPlatform()}.zip`;
-            console.log(`Downloading VLang from ${download_url}`);
+            console.log(`Downloading V from ${download_url}`);
             download_path = yield tc.downloadTool(download_url);
-            console.log(`Vlang downloaded to ${download_path}`);
+            console.log(`V downloaded to ${download_path}`);
         }
         catch (error) {
-            throw new Error(`Failed to download VLang version ${v_version}: ${error}`);
+            throw new Error(`Failed to download V version ${v_version}: ${error}`);
         }
         try {
             // extract
-            console.log('Extracting VLang...');
+            console.log('Extracting V...');
             ext_path = yield tc.extractZip(download_path, './.vlang_tmp_build');
-            console.log(`VLang extracted to ${ext_path}`);
+            console.log(`V extracted to ${ext_path}`);
             // extracts with a root folder that matches the fileName downloaded
-            console.log(`Add VLang to cache`);
+            console.log(`Add V to cache`);
             cache_path = yield tc.cacheDir(ext_path, 'v', v_version);
-            console.log(`VLang was added to cache using dir: ${cache_path}`);
+            console.log(`V was added to cache using dir: ${cache_path}`);
         }
         catch (error) {
-            throw new Error(`Failed to extract VLang version ${v_version}: ${error}`);
+            throw new Error(`Failed to extract V version ${v_version}: ${error}`);
         }
         return cache_path;
     });
