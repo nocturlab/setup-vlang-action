@@ -12,7 +12,7 @@ on:
   push:
     paths-ignore:
       - '**.md'
-      
+
 jobs:
   run:
     name: Run
@@ -27,6 +27,6 @@ jobs:
       id: v
     - name: Build repository app
       run: v build .
-    - name: Run VLang tests
+    - name: Run V tests
       run: v test .
 ```
