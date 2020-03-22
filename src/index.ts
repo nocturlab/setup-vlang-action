@@ -10,22 +10,22 @@ export async function run() {
   try {
     let v_version = core.getInput('v-version');
 
-    console.log(`Setup VLang with version ${v_version}`);
+    console.log(`Setup V with version ${v_version}`);
 
     if (v_version) {
       let cache_dir: string | undefined = tc.find('v', v_version);
       let install_dir: string | undefined;
 
       if (!cache_dir) {
-        console.log(`Vlang ${v_version} can't be found using cache, attempting to download ...`);
+        console.log(`V ${v_version} can't be found using cache, attempting to download ...`);
         install_dir = await installer.download_v(v_version);
-        console.log(`VLang Installed to ${install_dir}`);
+        console.log(`V Installed to ${install_dir}`);
       }
 
       if (install_dir) {
         core.exportVariable('V_HOME', install_dir);
         core.addPath(install_dir);
-        console.log('Added VLang to the path');
+        console.log('Added V to the path');
       } else {
         throw new Error(`Could not find a version that satisfied version spec: ${v_version}`);
       }
