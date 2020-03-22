@@ -1,4 +1,4 @@
-# ✨ Contributing to LWS ✨
+# ✨ Contributing to setup-vlang-action ✨
 
 ## Structure of the repository
 We'll use the Git method called `Gitflow'.
