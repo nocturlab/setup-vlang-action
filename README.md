@@ -1,5 +1,10 @@
-# Setup V environment ![Build](https://github.com/nocturlab/setup-vlang-action/workflows/Build/badge.svg) ![Tests](https://github.com/nocturlab/setup-vlang-action/workflows/Tests/badge.svg)
+# Setup V environment ![Latest version][githubBadge] ![Build][Build] ![Tests][Tests]
+
 GitHub Action that allows you to compile V programs without the use of Docker (because it's very slow).
+
+[githubBadge]: https://img.shields.io/github/v/release/nocturlab/setup-vlang-action
+[Build]: https://github.com/nocturlab/setup-vlang-action/workflows/Build/badge.svg 
+[Tests]: https://github.com/nocturlab/setup-vlang-action/workflows/Tests/badge.svg
 
 ## Usage
 You just have to setup your workflow like this:
