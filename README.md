@@ -21,7 +21,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up V version 0.1.24
-      uses: nocturlab/setup-vlang-action@1.0.0
+      uses: nocturlab/setup-vlang-action@1.0.1
       with:
         v-version: 0.1.24
       id: v
