@@ -1,5 +1,10 @@
-# setup-vlang-action
+# Setup V environment ![Latest version][githubBadge] ![Build][Build] ![Tests][Tests]
+
 GitHub Action that allows you to compile V programs without the use of Docker (because it's very slow).
+
+[githubBadge]: https://img.shields.io/github/v/release/nocturlab/setup-vlang-action
+[Build]: https://github.com/nocturlab/setup-vlang-action/workflows/Build/badge.svg 
+[Tests]: https://github.com/nocturlab/setup-vlang-action/workflows/Tests/badge.svg
 
 ## Usage
 You just have to setup your workflow like this:
@@ -21,7 +26,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set up V version 0.1.24
-      uses: nocturlab/setup-vlang-action@1.0.0
+      uses: nocturlab/setup-vlang-action@v1
       with:
         v-version: 0.1.24
       id: v

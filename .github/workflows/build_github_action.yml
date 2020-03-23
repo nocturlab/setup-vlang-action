@@ -1,16 +1,18 @@
-name: Build TS
+name: Build
 
 on:
   push:
     paths-ignore:
       - '**.md'
+      - 'dist/**.js'
   pull_request:
     paths-ignore:
       - '**.md'
+      - 'dist/**.js'
 
 jobs:
-  run:
-    name: Run
+  build:
+    name: Build GitHub Action
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -23,7 +25,6 @@ jobs:
 
     - name: npm install
       run: npm install
-
 
     - name: Clean old dist/
       run: |
@@ -43,41 +44,3 @@ jobs:
         git commit -m "WORKFLOW_COMMIT - update dist/index.js [skip ci]"
         git push
       continue-on-error: true
-
-    - name: Set up V version master
-      uses: ./
-      with:
-        v-version: latest
-      id: v
-    - name: Test V is present
-      run: v version
-
-  run-macos:
-    name: Run MacOS
-    runs-on: macos-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up V version master
-      uses: ./
-      with:
-        v-version: latest
-      id: v
-
-    - name: Test V is present
-      run: v version
-
-  run-windows:
-    name: Run Windows
-    runs-on: windows-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up V version master
-      uses: ./
-      with:
-        v-version: latest
-      id: v
-
-    - name: Test V is present
-      run: v version
