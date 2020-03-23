@@ -1,4 +1,4 @@
-# setup-vlang-action
+# Setup VLang environment ![Build](https://github.com/nocturlab/setup-vlang-action/workflows/Build/badge.svg) ![Tests](https://github.com/nocturlab/setup-vlang-action/workflows/Tests/badge.svg)
 GitHub Action that allows you to compile V programs without the use of Docker (because it's very slow).
 
 ## Usage
