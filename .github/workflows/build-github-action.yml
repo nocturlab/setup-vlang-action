@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: Build Github Action
+    name: Build GitHub Action
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
