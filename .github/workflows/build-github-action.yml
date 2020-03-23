@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'dist/**.js'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'dist/**.js'
+
+jobs:
+  build:
+    name: Build Github Action
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup node 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+
+    - name: npm install
+      run: npm install
+
+    - name: Clean old dist/
+      run: |
+        rm -r dist/
+        rm .gitignore
+      continue-on-error: true
+
+    - name: npm build
+      run: npm run build
+
+    - name: git push dist/
+      run : |
+        git config --global user.email "bot@nocturlab.fr"
+        git config --global user.name "BOT_WORKFLOW"
+        git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git
+        git add dist
+        git commit -m "WORKFLOW_COMMIT - update dist/index.js [skip ci]"
+        git push
+      continue-on-error: true
