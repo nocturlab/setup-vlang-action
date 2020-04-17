@@ -1,0 +1,55 @@
+name: Test Latest
+
+on:
+  push:
+    paths:
+      - 'dist/**.js'
+  pull_request:
+    paths:
+      - 'dist/**.js'
+
+jobs:
+  test-ubuntu:
+    name: Test with ubuntu
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: ./
+      with:
+        v-version: latest
+      id: v
+
+    - name: Test V is present
+      run: v version
+
+  test-macos:
+    name: Test on MacOS
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: ./
+      with:
+        v-version: latest
+      id: v
+
+    - name: Test V is present
+      run: v version
+
+  test-windows:
+    name: Test on Windows
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: ./
+      with:
+        v-version: latest
+      id: v
+
+    - name: Test V is present
+      run: v version
