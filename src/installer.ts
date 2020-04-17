@@ -36,7 +36,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
 
     if(v_version.includes('master')){
       console.log(`Building V from sources`);
-      console.log(execSync(`make`, { cwd: ext_path });
+      console.log(execSync(`make`, { cwd: ext_path }));
     }
     
     // extracts with a root folder that matches the fileName downloaded
