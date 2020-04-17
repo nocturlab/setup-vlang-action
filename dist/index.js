@@ -4649,6 +4649,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tc = __importStar(__webpack_require__(533));
+const path = __importStar(__webpack_require__(622));
 const sys = __importStar(__webpack_require__(913));
 const child_process_1 = __webpack_require__(129);
 function download_v(v_version) {
@@ -4681,6 +4682,7 @@ function download_v(v_version) {
             if (v_version.includes('master')) {
                 console.log(`Building V from sources`);
                 console.log(child_process_1.execSync(`make`, { cwd: ext_path }));
+                ext_path = path.join(ext_path, 'v-master/');
             }
             // extracts with a root folder that matches the fileName downloaded
             console.log(`Add V to cache`);
