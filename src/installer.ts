@@ -34,7 +34,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
     ext_path = await tc.extractZip(download_path, './.vlang_tmp_build');
     console.log(`V extracted to ${ext_path}`);
 
-    if(v_version.includes('master')){
+    if(v_version.includes('master')) {
       console.log(`Building V from sources`);
       console.log(execSync(`make`, { cwd: ext_path }));
     }
