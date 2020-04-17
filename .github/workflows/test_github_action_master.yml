@@ -18,7 +18,7 @@ jobs:
     - name: Set up V version master
       uses: ./
       with:
-        v-version: latest
+        v-version: master
       id: v
 
     - name: Test V is present
@@ -33,7 +33,7 @@ jobs:
     - name: Set up V version master
       uses: ./
       with:
-        v-version: latest
+        v-version: master
       id: v
 
     - name: Test V is present
@@ -48,7 +48,7 @@ jobs:
     - name: Set up V version master
       uses: ./
       with:
-        v-version: latest
+        v-version: master
       id: v
 
     - name: Test V is present
