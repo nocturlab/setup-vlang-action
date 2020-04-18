@@ -38,4 +38,4 @@ jobs:
 
 ## Inputs
 
-- `v-version`: V version. Can be either exact version number, or `latest` (by default).
+- `v-version`: V version. Can be either exact version number, `latest` (by default), or `master` (use the master branch instead of release).

@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as httpm from '@actions/http-client';
 import * as sys from './system';
 import {debug} from '@actions/core';
+import {execSync} from 'child_process';
 
 export async function download_v(v_version: string): Promise<string | undefined> {
   let download_path: string | undefined;
@@ -14,7 +15,9 @@ export async function download_v(v_version: string): Promise<string | undefined>
     let download_url: string = `https://github.com/vlang/v/releases/`
     if(v_version.includes('latest'))
       download_url+= `${v_version}/download/v_${sys.getPlatform()}.zip`
-    else
+    else if(v_version.includes('master')){
+      download_url = `https://github.com/vlang/v/archive/master.zip`
+    }else
       download_url+= `download/${v_version}/v_${sys.getPlatform()}.zip`
 
     console.log(`Downloading V from ${download_url}`);
@@ -31,6 +34,12 @@ export async function download_v(v_version: string): Promise<string | undefined>
     ext_path = await tc.extractZip(download_path, './.vlang_tmp_build');
     console.log(`V extracted to ${ext_path}`);
 
+    if(v_version.includes('master')) {
+      console.log(`Building V from sources`);
+      ext_path = path.join(ext_path, 'v-master/');
+      console.log(execSync(`make`, { cwd: ext_path }).toString());
+    }
+    
     // extracts with a root folder that matches the fileName downloaded
     console.log(`Add V to cache`);
     cache_path = await tc.cacheDir(ext_path, 'v', v_version);

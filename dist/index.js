@@ -1,3 +1,4 @@
+
 module.exports =
 /******/ (function(modules, runtime) { // webpackBootstrap
 /******/ 	"use strict";
@@ -4649,7 +4650,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const tc = __importStar(__webpack_require__(533));
+const path = __importStar(__webpack_require__(622));
 const sys = __importStar(__webpack_require__(913));
+const child_process_1 = __webpack_require__(129);
 function download_v(v_version) {
     return __awaiter(this, void 0, void 0, function* () {
         let download_path;
@@ -4660,6 +4663,9 @@ function download_v(v_version) {
             let download_url = `https://github.com/vlang/v/releases/`;
             if (v_version.includes('latest'))
                 download_url += `${v_version}/download/v_${sys.getPlatform()}.zip`;
+            else if (v_version.includes('master')) {
+                download_url = `https://github.com/vlang/v/archive/master.zip`;
+            }
             else
                 download_url += `download/${v_version}/v_${sys.getPlatform()}.zip`;
             console.log(`Downloading V from ${download_url}`);
@@ -4674,6 +4680,11 @@ function download_v(v_version) {
             console.log('Extracting V...');
             ext_path = yield tc.extractZip(download_path, './.vlang_tmp_build');
             console.log(`V extracted to ${ext_path}`);
+            if (v_version.includes('master')) {
+                console.log(`Building V from sources`);
+                ext_path = path.join(ext_path, 'v-master/');
+                console.log(child_process_1.execSync(`make`, { cwd: ext_path }).toString());
+            }
             // extracts with a root folder that matches the fileName downloaded
             console.log(`Add V to cache`);
             cache_path = yield tc.cacheDir(ext_path, 'v', v_version);
