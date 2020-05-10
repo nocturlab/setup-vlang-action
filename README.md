@@ -25,7 +25,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Set up V version 0.1.24
+    - name: Set up V version latest
       uses: nocturlab/setup-vlang-action@v1
       with:
         v-version: latest
