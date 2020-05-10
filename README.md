@@ -28,10 +28,10 @@ jobs:
     - name: Set up V version 0.1.24
       uses: nocturlab/setup-vlang-action@v1
       with:
-        v-version: 0.1.24
+        v-version: latest
       id: v
     - name: Build repository app
-      run: v build .
+      run: v .
     - name: Run V tests
       run: v test .
 ```
