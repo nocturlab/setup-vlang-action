@@ -3,7 +3,7 @@ name: Link tags
 on:
   release:
     types:
-      - released
+      - published
 
 jobs:
   build:
@@ -17,6 +17,10 @@ jobs:
         LATEST_TAG=${GITHUB_REF##*/}
         # Get the patch version of the tag
         tag=$(echo "${LATEST_TAG%.*.*}")
+        # Create git identity
+        git config --global user.email "bot@nocturlab.fr"
+        git config --global user.name "BOT_WORKFLOW"
         # Use -f to update the current tag version or create a new
-        git tag -f -a ${tag}
+        git push --delete origin ${tag} 2> /dev/null | true
+        git tag -f -m "🔖 Release ${tag}" -a ${tag}
         git push --tags

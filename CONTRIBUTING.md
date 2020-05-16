@@ -52,12 +52,12 @@ Now several cases are possible:
 
 ## Create new Release
 
-Before releasing a new version make sure you have the local repository up-to-date. So you can use this command : 
+Before releasing a new version make sure you have the local repository up-to-date. So you can use this command: 
 
 ```sh
 git checkout master && git pull && npm version minor
 ```
 
-`git checkout` to be sure that we are on master.
-`git pull` to be sure to have the latest changes on master.
-`npm version` to create the new version. `minor` will increment the latest number. If latest release was `v0.0.9`, so the next will be `v0.1.0`.
+- `git checkout` to be sure that we are on master.
+- `git pull` to be sure to have the latest changes on master.
+- `npm version [major | minor | patch]` to create the new version. `minor` will increment the number at the second position.
