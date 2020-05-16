@@ -6,8 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc && ncc build",
-    "pre-checkin": "npm run build && npm test"
-    "preversion": "npm test",
+    "pre-checkin": "npm run build && npm test",
     "postversion": "git push && git push --tags"
   },
   "repository": {
