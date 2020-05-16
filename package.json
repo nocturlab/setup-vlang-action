@@ -1,12 +1,14 @@
 {
   "name": "setup-vlang-action",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "private": true,
   "description": "setup vlang action",
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc && ncc build",
-    "pre-checkin": "npm run build && npm test"
+    "pre-checkin": "npm run build && npm test",
+    "postversion": "git push && git push --tags",
+    "release": "git checkout && npm version"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - id: draft_release
+      name: Draft Release
+      uses: toolmantim/release-drafter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Change tag
+      env:
+        GITHUB_USER: ${{ github.actor }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "Get the release name"
+        output=${{ steps.draft_release.outputs.html_url }}
+        output=$(hub release -d -f "%T;%U%n" | grep "${output}" | cut -d';' -f1)
+        echo "${output}"
+        
+        echo "Get the package.json version"
+        version=$(cat package.json | jq '.version')
+        version=${version//\"}
+        echo "${version}"
+        
+        echo "Edit the version in the release"
+        hub release edit -m "v${version} 🌈" "${output}"
+        echo "v${version} 🌈"
+        
+        echo "Get the new release tag"
+        output=$(hub release -d -f "%T;%t%n" | grep "v${version}" | head -n1 | cut -d';' -f 1)
+        echo "${output}"
+        
+        echo "Change the release tag to: v${version}"
+        content="$(hub release show "${output}")"
+        hub release delete "${output}"
+        hub release create --draft=true -m "${content}" "v${version}"
+        hub release -d

@@ -49,3 +49,15 @@ Now several cases are possible:
    Choose the start branch (the one you want to send your changes to) and the end branch (the one you want to send your changes to).
    Put an understandable name, click on `Assign Yourself` on the right,
    At the bottom of the description, note the id of your github issue like this: `Related issues: #1` or `Close #1`.
+
+## Create new Release
+
+Before releasing a new version make sure you have the local repository up-to-date. So you can use this command: 
+
+```sh
+git checkout master && git pull && npm version minor
+```
+
+- `git checkout` to be sure that we are on master.
+- `git pull` to be sure to have the latest changes on master.
+- `npm version [major | minor | patch]` to create the new version. `minor` will increment the number at the second position.

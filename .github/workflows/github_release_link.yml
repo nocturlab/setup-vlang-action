@@ -1,0 +1,26 @@
+name: Link tags
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    name: Link latest full tag to latest patch
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - run: |
+        # Extract the tag of the release
+        LATEST_TAG=${GITHUB_REF##*/}
+        # Get the patch version of the tag
+        tag=$(echo "${LATEST_TAG%.*.*}")
+        # Create git identity
+        git config --global user.email "bot@nocturlab.fr"
+        git config --global user.name "BOT_WORKFLOW"
+        # Use -f to update the current tag version or create a new
+        git push --delete origin ${tag} 2> /dev/null | true
+        git tag -f -m "🔖 Release ${tag}" -a ${tag}
+        git push --tags

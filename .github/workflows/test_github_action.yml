@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+    paths:
+      - 'dist/**.js'
+  pull_request:
+    paths:
+      - 'dist/**.js'
+
+jobs:
+  test-ubuntu:
+    name: Run tests on ${{ matrix.os }} ${{ matrix.v-version }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        v-version: [latest, master, 0.1.27]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up V version latest
+      uses: ./
+      with:
+        v-version: ${{ matrix.v-version }}
+      id: v
+
+    - name: Test V is present
+      run: v version
