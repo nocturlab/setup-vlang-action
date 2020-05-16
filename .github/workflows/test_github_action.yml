@@ -1,4 +1,4 @@
-name: Test Latest
+name: Tests
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   test-ubuntu:
-    name: Test with ubuntu
+    name: Run tests on ${{ matrix.os }} ${{ matrix.v-version }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
