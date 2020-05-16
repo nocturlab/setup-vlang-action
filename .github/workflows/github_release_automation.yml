@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - id: create-release
+    - id: create_release
       name: Create Release
       uses: toolmantim/release-drafter@v5
       env:
