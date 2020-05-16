@@ -17,4 +17,4 @@ jobs:
       uses: toolmantim/release-drafter@v5
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: echo "New release :${{ steps.create_release.outputs.html_url }}"
+    - run: echo "Release draft need to be published :${{ steps.create_release.outputs.html_url }}"
