@@ -52,7 +52,7 @@ Now several cases are possible:
 
 ## Create new Release
 
-To publish a new release you need to the repository, you need to be sure to be on the latest version. so you can use this commad : 
+Before releasing a new version make sure you have the local repository up-to-date. So you can use this command : 
 
 ```sh
 git checkout master && git pull && npm version minor

@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc && ncc build",
     "pre-checkin": "npm run build && npm test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "release": "git checkout && npm version"
   },
   "repository": {
     "type": "git",
