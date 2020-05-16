@@ -1,0 +1,22 @@
+name: Link tags
+
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  build:
+    name: Link latest full tag to latest patch
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - run: |
+        # Extract the tag of the release
+        LATEST_TAG=${GITHUB_REF##*/}
+        # Get the patch version of the tag
+        tag=$(echo "${LATEST_TAG%.*.*}")
+        # Use -f to update the current tag version or create a new
+        git tag -f -a ${tag}
+        git push --tags
