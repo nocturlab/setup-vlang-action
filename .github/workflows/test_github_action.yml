@@ -24,15 +24,15 @@ jobs:
 
     - name: Test V is present
       run: v version
-
+      
     - name: Test V fmt
       run: v fmt word_counter.v
-      working-directory: ${V_HOME}/examples/word_counter
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
 
     - name: Test V can compile something
       run: v build word_counter.v
-      working-directory: ${V_HOME}/examples/word_counter
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
       
     - name: Test compiled program
       run: ./word_counter cinderella.txt
-      working-directory: ${V_HOME}/examples/word_counter
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
