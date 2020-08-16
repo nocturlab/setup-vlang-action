@@ -26,7 +26,7 @@ jobs:
       run: v version
 
     - name: Show dir content
-      run: ls -lia
+      run: ls -lia $(pwd)
 
     - name: Get V repository for deep test
       uses: actions/checkout@v2
@@ -35,10 +35,10 @@ jobs:
         path: $PWD/v
 
     - name: Show dir content
-      run: ls -lia
+      run: ls -lia $(pwd)
       
     - name: Show dir content
-      run: ls -lia
+      run: ls -lia $(pwd)
       working-directory: v/example/word_counter
 
     - name: Test V fmt
