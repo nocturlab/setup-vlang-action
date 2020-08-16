@@ -24,6 +24,7 @@ export async function run() {
 
       if (install_dir) {
         core.exportVariable('V_HOME', install_dir);
+        core.setOutput('v_home', install_dir);
         core.addPath(install_dir);
         console.log('Added V to the path');
       } else {
