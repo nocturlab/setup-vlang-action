@@ -25,9 +25,6 @@ jobs:
       with:
         v-version: ${{ matrix.v-version }}
       id: v
-
-    - name: Show V directory
-      run: ls -lia ${{ steps.v.outputs.v_home }}
       
     - name: Test V is present
       run: v version
