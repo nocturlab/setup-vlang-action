@@ -31,10 +31,12 @@ jobs:
         repository: 'vlang/v'
         path: v
 
+    - name: Show file content
+      run: ls -lia
+      working-directory: ./v/example/word_counter
+
     - name: Test V fmt
-      run: |
-        ls -lia
-        v fmt word_counter.v
+      run: v fmt word_counter.v
       working-directory: ./v/example/word_counter
 
     - name: Test V can compile something
