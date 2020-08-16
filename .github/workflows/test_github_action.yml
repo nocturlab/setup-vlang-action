@@ -25,24 +25,28 @@ jobs:
     - name: Test V is present
       run: v version
 
+    - name: Show dir content
+      run: ls -lia
+      working-directory: v/example/word_counter
+
     - name: Get V repository for deep test
       uses: actions/checkout@v2
       with:
         repository: 'vlang/v'
-        path: v
+        path: $PWD/v
 
-    - name: Show file content
+    - name: Show dir content
       run: ls -lia
-      working-directory: ./v/example/word_counter
+      working-directory: v/example/word_counter
 
     - name: Test V fmt
       run: v fmt word_counter.v
-      working-directory: ./v/example/word_counter
+      working-directory: v/example/word_counter
 
     - name: Test V can compile something
       run: v build word_counter.v
-      working-directory: ./v/example/word_counter
+      working-directory: v/example/word_counter
       
     - name: Test compiled program
       run: ./word_counter cinderella.txt
-      working-directory: ./v/example/word_counter
+      working-directory: v/example/word_counter
