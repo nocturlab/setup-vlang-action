@@ -19,13 +19,13 @@ export async function run() {
       if (!cache_dir) {
         console.log(`V ${v_version} can't be found using cache, attempting to download ...`);
         install_dir = await installer.download_v(v_version);
-        console.log(`V Installed to ${install_dir}`);
+        console.log(`V Installed to ${install_dir}/v`);
       }
 
       if (install_dir) {
-        core.exportVariable('V_HOME', install_dir);
-        core.setOutput('v_home', install_dir);
-        core.addPath(install_dir);
+        core.exportVariable('V_HOME', install_dir+'/v');
+        core.setOutput('v_home', install_dir+'/v');
+        core.addPath(install_dir+'/v');
         console.log('Added V to the path');
       } else {
         throw new Error(`Could not find a version that satisfied version spec: ${v_version}`);
