@@ -35,7 +35,6 @@ jobs:
       run : |
         git config --global user.email "bot@nocturlab.fr"
         git config --global user.name "BOT_WORKFLOW"
-        git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git
         git add dist
         git commit -m "WORKFLOW_COMMIT - update dist/index.js"
         git push
