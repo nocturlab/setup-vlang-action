@@ -31,7 +31,7 @@ jobs:
     - name: npm build
       run: npm run build
 
-    - name: git push dist/
+    - name: git push dist
       run : |
         git config --global user.email "bot@nocturlab.fr"
         git config --global user.name "BOT_WORKFLOW"
