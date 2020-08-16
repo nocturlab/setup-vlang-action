@@ -2890,12 +2890,12 @@ function run() {
                 if (!cache_dir) {
                     console.log(`V ${v_version} can't be found using cache, attempting to download ...`);
                     install_dir = yield installer.download_v(v_version);
-                    console.log(`V Installed to ${install_dir}/v`);
+                    console.log(`V Installed to ${install_dir}`);
                 }
                 if (install_dir) {
-                    core.exportVariable('V_HOME', install_dir + '/v');
-                    core.setOutput('v_home', install_dir + '/v');
-                    core.addPath(install_dir + '/v');
+                    core.exportVariable('V_HOME', install_dir);
+                    core.setOutput('v_home', install_dir);
+                    core.addPath(install_dir);
                     console.log('Added V to the path');
                 }
                 else {
