@@ -42,7 +42,7 @@ export async function download_v(v_version: string): Promise<string | undefined>
     
     // extracts with a root folder that matches the fileName downloaded
     console.log(`Add V to cache`);
-    cache_path = await tc.cacheDir(ext_path, 'v', v_version);
+    cache_path = await tc.cacheDir(ext_path, 'nocturlab/setup-vlang-action', v_version);
     console.log(`V was added to cache using dir: ${cache_path}`);
   } catch (error) {
     throw new Error(`Failed to extract V version ${v_version}: ${error}`);
