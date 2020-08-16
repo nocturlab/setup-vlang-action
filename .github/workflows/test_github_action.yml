@@ -2,6 +2,9 @@ name: Tests
 
 on:
   pull_request:
+    paths: 
+      - dist/
+      - .github/workflows/test_github_action.yml
   schedule:
     - cron: '0 8 * * *'
 
