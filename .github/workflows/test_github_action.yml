@@ -34,7 +34,7 @@ jobs:
       working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
 
     - name: Test V can compile something
-      run: v build word_counter.v
+      run: v word_counter.v
       working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
       
     - name: Test compiled program
