@@ -25,6 +25,9 @@ jobs:
     - name: Test V is present
       run: v version
       
+    - name: Show V directory
+      run: ls -lia ${{ steps.v.outputs.v_home }}
+      
     - name: Test V fmt
       run: v fmt word_counter.v
       working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
