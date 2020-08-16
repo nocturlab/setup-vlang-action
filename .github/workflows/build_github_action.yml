@@ -1,6 +1,10 @@
 name: Build
 
 on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - 'dist/**.js'
   pull_request:
     paths-ignore:
       - '**.md'
