@@ -2,11 +2,7 @@ name: Tests
 
 on:
   push:
-    paths:
-      - 'dist/**.js'
   pull_request:
-    paths:
-      - 'dist/**.js'
   schedule:
     - cron: '0 8 * * *'
 
