@@ -2,7 +2,10 @@
 
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
+import * as cache from '@actions/cache';
+
 import * as installer from './installer';
+import * as sys from './system';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -13,7 +16,7 @@ export async function run() {
     console.log(`Setup V with version ${v_version}`);
 
     if (v_version) {
-      let cache_dir: string | undefined = tc.find('nocturlab/setup-vlang-action', v_version);
+      let cache_dir: string | undefined = await cache.restoreCache('./v', "v-${v_version}-${sys.getPlatform()}-${sys.getArch()}", ["v-", "v-${v_version}"]);
       let install_dir: string | undefined;
 
       if (!cache_dir) {
