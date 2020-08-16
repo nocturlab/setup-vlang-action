@@ -16,7 +16,7 @@ export async function run() {
     console.log(`Setup V with version ${v_version}`);
 
     if (v_version) {
-      let cache_dir: string | undefined = await cache.restoreCache(['./v'], , ["v-", "v-${v_version}"]);
+      let cache_dir: string | undefined = await cache.restoreCache(['./v'], "v-${v_version}-${sys.getPlatform()}-${sys.getArch()}", ["v-", "v-${v_version}"]);
       let install_dir: string | undefined;
 
       if (!cache_dir) {
