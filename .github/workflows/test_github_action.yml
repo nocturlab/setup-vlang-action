@@ -27,7 +27,6 @@ jobs:
 
     - name: Show dir content
       run: ls -lia
-      working-directory: v/example/word_counter
 
     - name: Get V repository for deep test
       uses: actions/checkout@v2
@@ -35,6 +34,9 @@ jobs:
         repository: 'vlang/v'
         path: $PWD/v
 
+    - name: Show dir content
+      run: ls -lia
+      
     - name: Show dir content
       run: ls -lia
       working-directory: v/example/word_counter
