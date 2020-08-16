@@ -4716,6 +4716,9 @@ function download_v(v_version) {
                 ext_path = path.join(ext_path, 'v-master/');
                 console.log(child_process_1.execSync(`make`, { cwd: ext_path }).toString());
             }
+            else {
+                ext_path = path.join(ext_path, 'v/');
+            }
             // extracts with a root folder that matches the fileName downloaded
             console.log(`Add V to cache`);
             cache_path = yield tc.cacheDir(ext_path, 'nocturlab/setup-vlang-action', v_version);
