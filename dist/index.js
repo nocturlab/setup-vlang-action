@@ -1528,10 +1528,6 @@ function download_v(v_version) {
             else {
                 ext_path = path.join(ext_path, 'v/');
             }
-            // extracts with a root folder that matches the fileName downloaded
-            console.log(`Add V to cache`);
-            cache_path = yield tc.cacheDir(ext_path, 'nocturlab/setup-vlang-action', v_version);
-            console.log(`V was added to cache using dir: ${cache_path}`);
         }
         catch (error) {
             throw new Error(`Failed to extract V version ${v_version}: ${error}`);
