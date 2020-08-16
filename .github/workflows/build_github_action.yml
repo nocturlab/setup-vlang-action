@@ -37,9 +37,10 @@ jobs:
 
     - name: git push dist
       run : |
+        echo "${GITHUB_REF#refs/heads/}"
         git config --global user.email "bot@nocturlab.fr"
         git config --global user.name "BOT_WORKFLOW"
-        git add dist
+        git add dist -f
         git commit -m "WORKFLOW_COMMIT - update dist/index.js"
         git push
       continue-on-error: true
