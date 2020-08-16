@@ -38,17 +38,17 @@ jobs:
       run: ls -lia .
       
     - name: Show dir
-      run: pwd
-      working-directory: v/example/word_counter
+      run: ls -lia .
+      working-directory: v/examples/word_counter
 
     - name: Test V fmt
       run: v fmt word_counter.v
-      working-directory: v/example/word_counter
+      working-directory: v/examples/word_counter
 
     - name: Test V can compile something
       run: v build word_counter.v
-      working-directory: v/example/word_counter
+      working-directory: v/examples/word_counter
       
     - name: Test compiled program
       run: ./word_counter cinderella.txt
-      working-directory: v/example/word_counter
+      working-directory: v/examples/word_counter
