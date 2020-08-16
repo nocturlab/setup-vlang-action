@@ -2885,17 +2885,17 @@ function run() {
             let v_version = core.getInput('v-version');
             console.log(`Setup V with version ${v_version}`);
             if (v_version) {
-                let cache_dir = tc.find('v', v_version);
+                let cache_dir = tc.find('nocturlab/setup-vlang-action', v_version);
                 let install_dir;
                 if (!cache_dir) {
                     console.log(`V ${v_version} can't be found using cache, attempting to download ...`);
                     install_dir = yield installer.download_v(v_version);
-                    console.log(`V Installed to ${install_dir}`);
+                    console.log(`V Installed to ${install_dir}/v`);
                 }
                 if (install_dir) {
-                    core.exportVariable('V_HOME', install_dir);
-                    core.setOutput('v_home', install_dir);
-                    core.addPath(install_dir);
+                    core.exportVariable('V_HOME', install_dir + '/v');
+                    core.setOutput('v_home', install_dir + '/v');
+                    core.addPath(install_dir + '/v');
                     console.log('Added V to the path');
                 }
                 else {
@@ -4718,7 +4718,7 @@ function download_v(v_version) {
             }
             // extracts with a root folder that matches the fileName downloaded
             console.log(`Add V to cache`);
-            cache_path = yield tc.cacheDir(ext_path, 'v', v_version);
+            cache_path = yield tc.cacheDir(ext_path, 'nocturlab/setup-vlang-action', v_version);
             console.log(`V was added to cache using dir: ${cache_path}`);
         }
         catch (error) {
