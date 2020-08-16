@@ -26,7 +26,7 @@ jobs:
       run: v version
 
     - name: Show dir
-      run: pwd
+      run: ls -lia .
 
     - name: Get V repository for deep test
       uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
         path: $PWD/v
 
     - name: Show dir
-      run: pwd
+      run: ls -lia .
       
     - name: Show dir
       run: pwd
