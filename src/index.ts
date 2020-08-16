@@ -16,7 +16,7 @@ export async function run() {
     console.log(`Setup V with version ${v_version}`);
 
     if (v_version) {
-      let cache_dir: string | undefined = await cache.restoreCache(['./v'], "v-${v_version}-${sys.getPlatform()}-${sys.getArch()}", ["v-", "v-${v_version}"]);
+      let cache_dir: string | undefined = await cache.restoreCache(['./v'], , ["v-", "v-${v_version}"]);
       let install_dir: string | undefined;
 
       if (!cache_dir) {
@@ -26,6 +26,10 @@ export async function run() {
       }
 
       if (install_dir) {
+        console.log(`Add V to cache`);
+        cache_path = const cacheId = await cache.saveCache([install_dir], "v-${v_version}-${sys.getPlatform()}-${sys.getArch()}")
+        console.log(`V was added to cache using dir: ${cache_path}`);
+        
         core.exportVariable('V_HOME', install_dir);
         core.setOutput('v_home', install_dir);
         core.addPath(install_dir);
