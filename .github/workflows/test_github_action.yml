@@ -40,3 +40,4 @@ jobs:
     - name: Test compiled program
       run: ./word_counter cinderella.txt
       working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
+
