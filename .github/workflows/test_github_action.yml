@@ -25,10 +25,6 @@ jobs:
     - name: Test V is present
       run: v version
 
-    - name: Show dir
-      run: ls -lia .
-      working-directory: ${V_HOME}/examples/word_counter
-
     - name: Test V fmt
       run: v fmt word_counter.v
       working-directory: ${V_HOME}/examples/word_counter
