@@ -1,12 +1,10 @@
 name: Tests
 
 on:
-  push:
-    paths:
-      - 'dist/**.js'
   pull_request:
-    paths:
-      - 'dist/**.js'
+    paths: 
+      - dist/
+      - .github/workflows/test_github_action.yml
   schedule:
     - cron: '0 8 * * *'
 
@@ -14,9 +12,10 @@ jobs:
   test-ubuntu:
     name: Run tests on ${{ matrix.os }} ${{ matrix.v-version }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        v-version: [latest, master, 0.1.27]
+        v-version: [latest, master, 0.1.29]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
@@ -26,6 +25,18 @@ jobs:
       with:
         v-version: ${{ matrix.v-version }}
       id: v
-
+      
     - name: Test V is present
       run: v version
+      
+    - name: Test V fmt
+      run: v fmt word_counter.v
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
+
+    - name: Test V can compile something
+      run: v word_counter.v
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
+      
+    - name: Test compiled program
+      run: ./word_counter cinderella.txt
+      working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter

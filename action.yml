@@ -5,6 +5,9 @@ inputs:
   v-version:
     description: 'The V version to download and use.'
     default: 'latest'
+output:
+  v_home:
+    description: 'The path where V is located.'
 runs:
   using: 'node12'
   main: 'dist/index.js'

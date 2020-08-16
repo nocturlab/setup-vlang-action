@@ -5,10 +5,12 @@ on:
     paths-ignore:
       - '**.md'
       - 'dist/**.js'
+      -  .github/workflows/test_github_action.yml
   pull_request:
     paths-ignore:
       - '**.md'
       - 'dist/**.js'
+      -  .github/workflows/test_github_action.yml
 
 jobs:
   build:
@@ -35,12 +37,12 @@ jobs:
     - name: npm build
       run: npm run build
 
-    - name: git push dist/
+    - name: git push dist
       run : |
+        echo "${GITHUB_REF#refs/heads/}"
         git config --global user.email "bot@nocturlab.fr"
         git config --global user.name "BOT_WORKFLOW"
-        git remote set-url origin https://shiipou:${{ secrets.GITHUB_TOKEN }}@github.com/nocturlab/setup-vlang-action.git
-        git add dist
-        git commit -m "WORKFLOW_COMMIT - update dist/index.js [skip ci]"
+        git add dist -f
+        git commit -m "WORKFLOW_COMMIT - update dist/index.js"
         git push
       continue-on-error: true
