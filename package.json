@@ -27,7 +27,7 @@
     "@actions/tool-cache": "^1.6.0"
   },
   "devDependencies": {
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
     "@zeit/ncc": "^0.22.3",
     "@types/node": "^14.0.27"
   }
