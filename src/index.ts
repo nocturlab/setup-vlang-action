@@ -13,7 +13,7 @@ export async function run() {
     console.log(`Setup V with version ${v_version}`);
 
     if (v_version) {
-      let cache_dir: string | undefined = tc.find('v', v_version);
+      let cache_dir: string | undefined = tc.find('nocturlab/setup-vlang-action', v_version);
       let install_dir: string | undefined;
 
       if (!cache_dir) {
