@@ -30,7 +30,7 @@ jobs:
       run: v version
       
     - name: Test V fmt
-      run: v fmt -verify word_counter.v
+      run: v fmt -verify -verbose word_counter.v
       working-directory: ${{ steps.v.outputs.v_home }}/examples/word_counter
 
     - name: Test V can compile something
