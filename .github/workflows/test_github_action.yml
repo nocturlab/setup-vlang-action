@@ -1,12 +1,16 @@
 name: Tests
 
 on:
+  push:
+    paths:
+      - dist/
+      - .github/workflows/test_github_action.yml
   pull_request:
     paths: 
       - dist/
       - .github/workflows/test_github_action.yml
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 * * 3'
 
 jobs:
   test-ubuntu:
