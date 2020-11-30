@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        v-version: [latest, master, 0.1.29]
+        v-version: [latest, master, 0.1.30]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Checkout
