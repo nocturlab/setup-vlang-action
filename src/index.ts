@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 export async function run() {
-  try {
+//  try {
     let v_version = core.getInput('v-version');
 
     console.log(`Setup V with version ${v_version}`);
@@ -35,9 +35,10 @@ export async function run() {
     // add problem matchers
     const matchersPath = path.join(__dirname, '..', 'matchers.json');
     console.log(`##[add-matcher]${matchersPath}`);
-  } catch (error) {
-    core.setFailed(error.message);
-  }
+/*  } catch (error) {
+    console.log(error);
+//    core.setFailed(error.message);
+  }*/
 }
 
 run();
